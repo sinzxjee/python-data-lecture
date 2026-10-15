@@ -1,0 +1,393 @@
+<!doctype html><html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Bài giảng NumPy và Pandas bằng tiếng Việt, với ví dụ Python và câu hỏi ôn tập."><title>Python / Khoa học dữ liệu</title><link rel="stylesheet" href="style.css"></head><body><div class="progress" aria-hidden="true"></div><header><a class="brand" href="#"><b>py.</b> ghi chép dữ liệu</a><nav aria-label="Điều hướng chính"><a href="#topic-1">NumPy</a><a href="#topic-125">Pandas</a><a href="#topic-161">Ôn tập ↗</a></nav></header><section class="hero"><div class="eyebrow">PYTHON / KHOA HỌC DỮ LIỆU</div><h1>Từ mảng số.<br>Đến <em>hiểu dữ liệu.</em></h1><p class="intro">Nắm vững NumPy và Pandas — hai nền tảng để tính toán, thao tác và phân tích dữ liệu trong Python.</p><div class="hero-bottom"><a class="start" href="#topic-1">Bắt đầu bài học &nbsp; ↓</a><span class="meta">02 THƯ VIỆN CỐT LÕI &nbsp; / &nbsp; 67 VÍ DỤ MÃ PYTHON</span></div></section><section class="overview" aria-label="Nội dung chính"><a href="#topic-1"><small>01 / TÍNH TOÁN</small><h2>NumPy ↗</h2><p>Mảng nhiều chiều. Phép toán vector hóa.</p></a><a href="#topic-125"><small>02 / PHÂN TÍCH</small><h2>Pandas ↗</h2><p>Series. DataFrame. Dữ liệu có nhãn.</p></a></section><main class="layout"><aside><div class="label">TRONG BÀI HỌC NÀY</div><input id="search" type="search" placeholder="Tìm mục bài học…" aria-label="Tìm trong mục lục"><nav aria-label="Mục lục"><a class="major" href="#topic-1">Thư viện NumPy</a><a class="" href="#topic-2">Giới thiệu chung về NumPy</a><a class="" href="#topic-6">Đối tượng ndarray của NumPy</a><a class="" href="#topic-28">Các phép toán số học với mảng `NumPy`</a><a class="" href="#topic-30">Chỉ số trong mảng (Indexing and Slicing)</a><a class="" href="#topic-48">Chỉ số mảng nâng cao (Fancy Indexing)</a><a class="" href="#topic-57">Chuyển vị mảng và hoán đổi thứ tự trục</a><a class="" href="#topic-63">Hàm xử lý trên từng phần tử trong mảng (UFuncs)</a><a class="" href="#topic-72">Xử lý dữ liệu dựa trên mảng NumPy</a><a class="" href="#topic-75">Biểu thức điều kiện với np.where</a><a class="" href="#topic-77">Các phương thức thống kê toán học</a><a class="" href="#topic-84">Các phương thức cho mảng kiểu logical</a><a class="" href="#topic-88">Sắp xếp giá trị trong mảng NumPy</a><a class="" href="#topic-94">Các phép toán cho tập hợp (Set Operations)</a><a class="" href="#topic-100">Nhập và xuất file với mảng NumPy</a><a class="" href="#topic-108">Lưu và tải tệp văn bản</a><a class="" href="#topic-112">Các phép toán đại số tuyến tính</a><a class="" href="#topic-118">Sinh số ngẫu nhiên</a><a class="" href="#topic-124">Tổng kết về thư viện NumPy</a><a class="major" href="#topic-125">Thư viện Pandas</a><a class="" href="#topic-126">Giới thiệu về thư viện pandas</a><a class="" href="#topic-127">Series (chuỗi)</a><a class="" href="#topic-143">DataFrame</a><a class="" href="#topic-151">Chỉ số trong series và dataframe</a><a class="major" href="#topic-161">Câu hỏi ôn tập lý thuyết</a></nav></aside><article><p class="key">Điều cần nhớ: <strong>NumPy xử lý mảng số. Pandas xử lý dữ liệu dạng bảng.</strong></p><h2 id="topic-1">Thư viện NumPy</h2><h3 id="topic-2">Giới thiệu chung về NumPy</h3><p><strong>Thư viện NumPy trong Khoa học Dữ liệu</strong></p><p class="bullet"><code>NumPy</code> (viết tắt của <em>Numerical Python</em>) là <strong>thư viện nền tảng</strong> cho tính toán số học trong Python.</p><p class="bullet">Nhiều thư viện khoa học dữ liệu khác như <code>SciPy</code> và <code>pandas</code> sử dụng cấu trúc mảng của <code>NumPy</code> làm nền tảng.</p><p><strong>Các tính năng chính của NumPy</strong></p><p class="bullet"><code>ndarray</code>: đối tượng mảng N-chiều hiệu quả, hỗ trợ <strong>phép toán vector hóa</strong> và lan truyền linh hoạt.</p><p class="bullet">Tập hợp các <strong>hàm chuẩn</strong> để thực hiện phép toán trên toàn bộ mảng hoặc từng phần tử, <strong>không cần viết vòng lặp</strong>.</p><p class="bullet">Công cụ để <strong>đọc/ghi dữ liệu mảng</strong>, bao gồm hỗ trợ tệp <strong>ánh xạ bộ nhớ</strong> (<em>memory-mapped files</em>).</p><p class="bullet">Cung cấp các công cụ cho:</p><p class="bullet"><strong>Đại số tuyến tính</strong></p><p class="bullet"><strong>Biến đổi Fourier</strong></p><p class="bullet"><strong>Sinh số ngẫu nhiên</strong></p><p><strong>Ứng dụng điển hình của NumPy</strong></p><p class="bullet"><strong>Chuẩn bị dữ liệu</strong>: làm sạch, thao tác, chuẩn hóa, định hình lại, sắp xếp và lọc mảng.</p><p class="bullet"><strong>Phân tích và mô hình hóa dữ liệu</strong>: áp dụng các phép toán, thống kê và hàm tổng hợp cho toàn bộ tập dữ liệu hoặc các tập con cụ thể.</p><p class="bullet"><strong>Mô phỏng</strong>: tạo dữ liệu ngẫu nhiên theo các phân phối đã biết và chạy mô hình mô phỏng.</p><p class="bullet"><strong>Các thuật toán số khác</strong>: xử lý tín hiệu, lọc, và các tác vụ tính toán số hiệu năng cao.</p><p><strong>Quy ước sử dụng</strong></p><p class="bullet">Trong chương này và xuyên suốt cuốn sách, <code>NumPy</code> sẽ được nhập khẩu (import) với tên <strong>np</strong></p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np</code></pre></div><p><strong>Lưu ý về cách import thư viện NumPy</strong></p><p class="bullet">Mặc dù cú pháp <code>from numpy import *</code> có thể giúp rút ngắn mã nguồn, <strong>cách làm này không được khuyến khích</strong>, vì các lý do sau:</p><p class="bullet">Không gian tên của <code>NumPy</code> rất lớn và chứa nhiều hàm trùng tên với các hàm tích hợp sẵn trong Python, chẳng hạn như <code>min</code> và <code>max</code>.</p><p class="bullet">Việc ghi đè các hàm tích hợp này có thể dẫn đến <strong>xung đột tên</strong> và gây ra các lỗi khó phát hiện, đặc biệt trong các dự án lớn hoặc khi làm việc nhóm.</p><p class="bullet">Khi bạn thấy đoạn mã như <code>np.some_function</code>, điều này có nghĩa là:</p><p class="bullet">Hàm hoặc đối tượng đó nằm trong <strong>không gian tên cấp cao nhất của thư viện NumPy</strong>.</p><p class="bullet">Cách gọi này rõ ràng, giúp mã dễ đọc và dễ bảo trì hơn.</p><h3 id="topic-6">Đối tượng ndarray của NumPy</h3><p>Một trong những đặc điểm quan trọng của <code>NumPy</code> là đối tượng mảng N-chiều, hay <code>ndarray</code>. Đây là một đối tượng đa chiều, nhanh chóng và linh hoạt cho các tập dữ liệu lớn trong Python.</p><p>Giả sử chúng ta muốn nhân mỗi phần tử trong một chuỗi lớn với 2.</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+my_arr = np.arange(1000) # Mảng ndarray của NumPy
+my_list = list(range(1000)) # Danh sách (list) của Python
+print(my_list)
+
+# Với Python list, chúng ta phải lặp qua danh sách:
+for _ in range(10): my_list2 = [x * 2 for x in my_list]
+print(my_list2)
+
+# Với NumPy array, phép toán được vector hóa:
+for _ in range(10): my_arr2 = my_arr * 2
+print(my_arr2)</code></pre></div><p>Chúng ta có thể đo thời gian thực thi:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import time
+import numpy as np
+my_arr = np.arange(1000) # Mảng ndarray của NumPy
+my_list = list(range(1000)) # Danh sách (list) của Python
+
+t0 = time.time()
+for _ in range(10): my_list2 = [x * 2 for x in my_list]
+t1 = time.time()
+print(f&quot;List comprehension: {t1 - t0:.4f} s&quot;)
+
+t0 = time.time()
+for _ in range(10): my_arr2 = my_arr * 2
+t1 = time.time()
+print(f&quot;NumPy array: {t1 - t0:.4f} s&quot;)</code></pre></div><p>Một <code>ndarray</code> là một đối tượng chứa dữ liệu <strong>đồng nhất</strong> (homogeneous); nghĩa là, tất cả các phần tử của nó phải có cùng một kiểu.</p><p>Mỗi đối tượng có một thuộc tính <code>shape</code> trả lại giá trị là một <code>tuple</code> biểu thị kích thước của mỗi chiều, và thuộc tính <code>dtype</code>, một đối tượng mô tả <strong>kiểu dữ liệu</strong> của mảng:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+data = np.array([[1.5, -0.1, 3], [0, -3, 6.5]])
+print(data)
+print(data.shape)
+print(data.dtype)</code></pre></div><h4 id="topic-12">Tạo một ndarray</h4><hr><p>Cách dễ nhất để tạo một mảng trong NumPy là sử dụng hàm <code>np.array</code>.</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+data1 = [6, 7.5, 8, 0, 1]
+arr1 = np.array(data1)
+print(arr1)</code></pre></div><p>Khi khởi tạo mảng bằng các danh sách lồng nhau, Python sẽ chuyển đổi thành mảng nhiều chiều:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+data2 = [[1, 2, 3, 4], [5, 6, 7, 8]]
+arr2 = np.array(data2)
+print(arr2)
+
+# Chúng ta có thể xác nhận điều này bằng cách kiểm tra các thuộc tính ndim và shape:
+print(arr2.ndim)
+print(arr2.shape)</code></pre></div><p>Ngoài <code>np.array</code>, có một số hàm khác để tạo mảng mới.</p><p class="bullet"><code>np.zeros</code> và <code>np.ones</code> tạo ra các mảng chỉ có các số 0 hoặc số 1.</p><p class="bullet"><code>np.empty</code> tạo ra một mảng mà không khởi tạo các giá trị.</p><p class="bullet"><code>np.arange</code> là một phiên bản giống như hàm <code>range</code>.</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+print(np.zeros((3, 6)))
+print(np.empty((2, 3, 2)))
+print(np.arange(15))</code></pre></div><p><strong>Một số hàm tạo mảng NumPy quan trọng</strong></p><div class="table-scroll"><table><tr><td>Hàm</td><td>Mô tả</td></tr><tr><td><code>array</code></td><td>Chuyển đổi dữ liệu đầu vào thành một ndarray.</td></tr><tr><td><code>asarray</code></td><td>Chuyển đổi đầu vào thành ndarray, nhưng không sao chép nếu đầu vào đã là một ndarray.</td></tr><tr><td><code>arange</code></td><td>Giống như <code>range</code> nhưng trả về một ndarray.</td></tr><tr><td><code>ones</code>, <code>ones_like</code></td><td>Tạo mảng chứa toàn số 1.</td></tr><tr><td><code>zeros</code>, <code>zeros_like</code></td><td>Tạo mảng chứa toàn số 0.</td></tr><tr><td><code>empty</code>, <code>empty_like</code></td><td>Tạo các mảng mới mà không điền bất kỳ giá trị nào.</td></tr><tr><td><code>full</code>, <code>full_like</code></td><td>Tạo một mảng với tất cả các giá trị được đặt thành &quot;giá trị điền&quot; được chỉ định.</td></tr><tr><td><code>eye</code>, <code>identity</code></td><td>Tạo một ma trận đơn vị (identity matrix) vuông N × N.</td></tr></table></div><h4 id="topic-20">Kiểu dữ liệu của ndarray</h4><p><strong>Kiểu dữ liệu</strong>, hay <code>dtype</code>, là một đối tượng đặc biệt chứa thông tin mà <code>ndarray</code> cần để diễn giải một khối bộ nhớ là một loại dữ liệu cụ thể.</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arr1_dtype = np.array([1, 2, 3], dtype=np.float64)
+arr2_dtype = np.array([1, 2, 3], dtype=np.int32)
+print(arr1_dtype.dtype)
+print(arr2_dtype.dtype)</code></pre></div><p><strong>Các kiểu dữ liệu NumPy</strong></p><div class="table-scroll"><table><tr><td>Kiểu</td><td>Mã kiểu</td><td>Mô tả</td></tr><tr><td><code>int8</code>, <code>uint8</code></td><td><code>i1</code>, <code>u1</code></td><td>Số nguyên 8 bit có dấu và không dấu</td></tr><tr><td><code>int16</code>, <code>uint16</code></td><td><code>i2</code>, <code>u2</code></td><td>Số nguyên 16 bit có dấu và không dấu</td></tr><tr><td><code>int32</code>, <code>uint32</code></td><td><code>i4</code>, <code>u4</code></td><td>Số nguyên 32 bit có dấu và không dấu</td></tr><tr><td><code>int64</code>, <code>uint64</code></td><td><code>i8</code>, <code>u8</code></td><td>Số nguyên 64 bit có dấu và không dấu</td></tr><tr><td><code>float16</code></td><td><code>f2</code></td><td>Số thực dấu phẩy động nửa độ chính xác</td></tr><tr><td><code>float32</code></td><td><code>f4</code> hoặc <code>f</code></td><td>Số thực dấu phẩy động đơn độ chính xác</td></tr><tr><td><code>float64</code></td><td><code>f8</code> hoặc <code>d</code></td><td>Số thực dấu phẩy động độ chính xác kép</td></tr><tr><td><code>complex64</code>, <code>complex128</code></td><td><code>c8</code>, <code>c16</code></td><td>Số phức</td></tr><tr><td><code>bool</code></td><td><code>?</code></td><td>Kiểu Boolean (<code>True</code> và <code>False</code>)</td></tr><tr><td><code>object</code></td><td><code>O</code></td><td>Kiểu đối tượng Python</td></tr><tr><td><code>bytes_</code></td><td><code>S</code></td><td>Kiểu chuỗi byte (ASCII) có độ dài cố định</td></tr><tr><td><code>str_</code></td><td><code>U</code></td><td>Kiểu Unicode có độ dài cố định</td></tr></table></div><h4 id="topic-23">Chuyển đổi kiểu dữ liệu với <code>astype</code></h4><p>Bạn có thể chuyển đổi, hay còn gọi là <code>cast</code>, một mảng từ <code>dtype</code> này sang <code>dtype</code> khác bằng phương thức <code>astype</code>.</p><p>Khi ép kiểu một số số thực dấu phẩy động thành kiểu số nguyên, phần thập phân sẽ bị <strong>cắt bỏ</strong>:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arr_fp_to_int = np.array([3.7, -1.2, -2.6, 0.5, 12.9, 10.1])
+print(arr_fp_to_int)
+print(arr_fp_to_int.astype(np.int32))</code></pre></div><p>Nếu bạn có một mảng kiểu chuỗi ký tự nhưng bản chất là biểu diễn các số, bạn có thể sử dụng <code>astype</code> để chuyển đổi chúng thành dạng số:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+numeric_strings = np.array([&quot;1.25&quot;, &quot;-9.6&quot;, &quot;42&quot;])
+print(numeric_strings.astype(float)) # NumPy sẽ tự động suy ra np.float64</code></pre></div><p><strong>Lưu ý:</strong> Việc gọi <code>astype</code> <em>luôn</em> tạo ra một mảng mới (một bản sao của dữ liệu), ngay cả khi <code>dtype</code> mới giống với <code>dtype</code> cũ.</p><h3 id="topic-28">Các phép toán số học với mảng <code>NumPy</code></h3><p>Đối tượng mảng cho phép chúng ta thể hiện các phép toán theo nhóm trên dữ liệu mà không cần viết vòng lặp <code>for</code>. <code>NumPy</code> gọi tính năng này là <strong>véc-tơ hóa</strong> (vectorization). Bất kỳ phép toán số học nào giữa các mảng có kích thước bằng nhau đều áp dụng phép toán đó theo từng phần tử:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arr_arith = np.array([[1., 2., 3.], [4., 5., 6.]])
+print(arr_arith)
+print(arr_arith * arr_arith)
+print(arr_arith - arr_arith)
+
+# Các phép toán số học với các đại lượng vô hướng (scalar) sẽ truyền giá trị vô hướng đó cho mỗi phần tử trong mảng:
+print(1 / arr_arith)
+print(arr_arith ** 2)
+
+# Các phép so sánh giữa các mảng có cùng kích thước tạo ra một mảng kiểu logical (boolean array)
+arr2_arith = np.array([[0., 4., 1.], [7., 2., 12.]])
+print(arr2_arith)
+print(arr2_arith &gt; arr_arith)</code></pre></div><h3 id="topic-30">Chỉ số trong mảng (Indexing and Slicing)</h3><h4 id="topic-31">Chỉ số trong mảng một chiều</h4><p>Các mảng một chiều hoạt động tương tự như một <code>list</code> trong Python:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arr_slice_basic = np.arange(10)
+print(arr_slice_basic)
+print(arr_slice_basic[5])
+print(arr_slice_basic[5:8])
+arr_slice_basic[5:8] = 12
+print(arr_slice_basic)</code></pre></div><p>Sự khác biệt quan trọng so với <code>list</code>: các lát cắt mảng là các <strong>khung nhìn</strong> (<em>views</em>) trên mảng gốc. Điều này có nghĩa là dữ liệu <strong>không được sao chép</strong>, và bất kỳ sửa đổi nào đối với khung nhìn sẽ được phản ánh trong mảng ban đầu.</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arr_slice_basic = np.arange(10)
+arr_slice_view = arr_slice_basic[5:8]
+print(arr_slice_view)
+
+# Khi chúng ta thay đổi các giá trị trong arr_slice_view, các thay đổi đó được phản ánh trong mảng gốc arr_slice_basic:
+arr_slice_view[1] = 12345
+print(arr_slice_basic) # Giá trị tương ứng với chỉ số 6 sẽ thay đổi</code></pre></div><p>Nếu bạn muốn có một <strong>bản sao</strong> của một lát cắt thay vì một khung nhìn, bạn sẽ cần phải sao chép mảng một cách rõ ràng bằng phương thức <code>.copy()</code>.</p><h4 id="topic-36">Chỉ số trong mảng đa chiều</h4><p>Trong một mảng hai chiều, các phần tử tại mỗi chỉ mục là các mảng một chiều:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arr2d = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print(arr2d[2])
+
+# Các phần tử riêng lẻ có thể được truy cập bằng chỉ số đệ quy arr2d[0][2] hoặc cú pháp ngắn gọn arr2d[0, 2]:
+print(arr2d[0][2])
+print(arr2d[0, 2])</code></pre></div><p>Trong các mảng nhiều chiều, nếu bạn bỏ qua các chỉ số phía sau, đối tượng được trả về sẽ là một <code>ndarray</code> có chiều thấp hơn.</p><p>Ví dụ, mảng 2 × 2 × 3 <code>arr3d</code>:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arr3d = np.array([[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]])
+print(arr3d)
+
+# arr3d[0] sẽ là một mảng 2 × 3:
+print(arr3d[0])
+
+# Tương tự, arr3d[1, 0] cung cấp tất cả các giá trị có chỉ mục bắt đầu bằng (1, 0), tạo thành một mảng một chiều:
+print(arr3d[1, 0])</code></pre></div><h4 id="topic-40">Sử dụng lát cắt trên mảng</h4><hr><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arr2d = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print(arr2d)
+print(arr2d[:2])
+print(arr2d[:2, 1:])</code></pre></div><p>Bằng cách sử dụng đồng thời các chỉ mục số nguyên và lát cắt, bạn có thể nhận được các lát cắt có chiều thấp hơn.</p><p>Ví dụ, chọn hàng thứ hai nhưng chỉ hai cột đầu tiên:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arr2d = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print(arr2d[1, :2])
+
+# Chọn cột thứ ba nhưng chỉ hai hàng đầu tiên:
+print(arr2d[:2, 2])
+
+# Dấu hai chấm (:) đứng một mình có nghĩa là lấy toàn bộ trục:
+print(arr2d[:, :1])</code></pre></div><h4 id="topic-44">Sử dụng chỉ số kiểu logical (Boolean Indexing)</h4><p>Giả sử mỗi tên trong mảng <code>names</code> tương ứng với một hàng trong mảng <code>data_bool</code>.</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+names = np.array([&quot;Bob&quot;, &quot;Joe&quot;, &quot;Will&quot;, &quot;Bob&quot;, &quot;Will&quot;, &quot;Joe&quot;, &quot;Joe&quot;])
+data_bool = np.array([[4, 7], [0, 2], [-5, 6], [0, 0], [1, 2], [-12, -4], [3, 4]])
+print(data_bool)
+
+# Chúng ta muốn chọn tất cả các hàng có tên tương ứng là &#x27;Bob&#x27;. Phép so sánh names == &#x27;Bob&#x27; tạo ra một mảng kiểu logical:
+print(names == &quot;Bob&quot;)
+
+# Mảng logical này có thể được sử dụng như chỉ số để lấy ra một mảng con:
+print(data_bool[names == &quot;Bob&quot;])</code></pre></div><p><strong>Chú ý:</strong></p><p class="bullet">Chỉ số kiểu logical <em>luôn</em> tạo ra một bản sao của dữ liệu.</p><p class="bullet">Từ khóa <code>and</code> và <code>or</code> của Python không hoạt động với các mảng kiểu logical. Thay vào đó, hãy sử dụng <code>&amp;</code> (và) và <code>|</code> (hoặc).</p><p>Ví dụ, chọn các hàng mà <code>names == &quot;Bob&quot;</code> đồng thời lấy chỉ số cột theo kiểu cắt lát:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+names = np.array([&quot;Bob&quot;, &quot;Joe&quot;, &quot;Will&quot;, &quot;Bob&quot;, &quot;Will&quot;, &quot;Joe&quot;, &quot;Joe&quot;])
+data_bool = np.array([[4, 7], [0, 2], [-5, 6], [0, 0], [1, 2], [-12, -4], [3, 4]])
+print(data_bool[names == &quot;Bob&quot;, 1:])
+
+# Để chọn mọi tên ngoại trừ &#x27;Bob&#x27;, bạn có thể sử dụng != hoặc phủ định điều kiện bằng ~:
+print(data_bool[~(names == &quot;Bob&quot;)])
+
+# Để kết hợp các điều kiện logical, sử dụng &amp; và |. Ví dụ, chọn tên hàng là Bob hoặc Will:
+mask = (names == &quot;Bob&quot;) | (names == &quot;Will&quot;)
+print(mask)
+print(data_bool[mask])
+
+# Việc thay thế giá trị trong mảng sử dụng chỉ số kiểu logical cũng rất đơn giản. Ví dụ, để đặt tất cả các giá trị âm trong data_bool thành 0:
+data_bool_copy = data_bool.copy()
+data_bool_copy[data_bool_copy &lt; 0] = 0
+print(data_bool_copy)</code></pre></div><h3 id="topic-48">Chỉ số mảng nâng cao (Fancy Indexing)</h3><p><em>Kỹ thuật chỉ số nâng cao</em> là một thuật ngữ của NumPy để mô tả việc tạo chỉ số bằng các <strong>mảng số nguyên</strong>.</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arr_fancy = np.zeros((8, 4))
+for i in range(8):
+    arr_fancy[i] = i
+print(arr_fancy)</code></pre></div><p>Để chọn một tập con các hàng theo một thứ tự cụ thể, ta có thể truyền một danh sách các chỉ số:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arr_fancy = np.zeros((8, 4))
+for i in range(8):
+    arr_fancy[i] = i
+print(arr_fancy)
+print(arr_fancy[[4, 3, 0, 6]])</code></pre></div><p>Khi chúng ta sử dụng chỉ số là mảng nhiều chiều, kết quả trả lại sẽ là một mảng <strong>một chiều</strong> các phần tử tương ứng với mỗi cặp chỉ số.</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arr_fancy_reshape = np.arange(32).reshape((8, 4))
+print(arr_fancy_reshape)
+
+# Lấy các phần tử tại (1,0), (5,3), (7,1), và (2,2)
+print(arr_fancy_reshape[[1, 5, 7, 2], [0, 3, 1, 2]])</code></pre></div><p>Kết quả của chỉ số nâng cao luôn là một <strong>bản sao</strong> của dữ liệu.</p><p>Để chọn một vùng hình chữ nhật từ một mảng, bạn có thể sử dụng <code>np.ix_</code>. Hàm này chuyển đổi hai mảng số nguyên một chiều thành một kiểu chỉ số đặc biệt:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arr_fancy_ix = np.arange(32).reshape((8, 4))
+print(arr_fancy_ix[np.ix_([1, 5, 7, 2], [0, 3, 1, 2])])</code></pre></div><h3 id="topic-57">Chuyển vị mảng và hoán đổi thứ tự trục</h3><hr><p>Chuyển vị là một dạng đặc biệt của việc định hình lại (reshaping), trả về một <strong>khung nhìn</strong> của dữ liệu ban đầu. Các mảng có thuộc tính <code>T</code> và phương thức <code>transpose</code>:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arr_T = np.arange(15).reshape((3, 5))
+print(arr_T)
+print(arr_T.T)</code></pre></div><p>Phép nhân ma trận trong NumPy được thực hiện bằng hàm <code>np.dot</code>:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arr_dot_T = np.array([[0, 1, 0], [1, 2, -2], [6, 3, 2], [-1, 0, -1], [1, 0, 1]])
+print(arr_dot_T)
+print(np.dot(arr_dot_T.T, arr_dot_T))</code></pre></div><p>Phương thức <code>transpose</code> được dùng tổng quát hơn để hoán vị các trục. <code>swapaxes</code> nhận một cặp số trục và chuyển đổi chúng.</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arr_transpose_axes = np.arange(16).reshape((2, 2, 4))
+print(arr_transpose_axes)
+print(arr_transpose_axes.transpose((1, 0, 2))) # Hoán đổi trục 0 và trục 1
+print(arr_transpose_axes.swapaxes(0, 1))</code></pre></div><h3 id="topic-63">Hàm xử lý trên từng phần tử trong mảng (UFuncs)</h3><p><strong>Universal functions</strong>, hay <em>ufunc</em>, là các hàm thực hiện các phép toán theo từng phần tử trên dữ liệu trong <code>ndarray</code>.</p><p><strong>Unary ufuncs</strong> chỉ thực hiện tính toán trên từng phần tử của một mảng.</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arr_ufunc = np.arange(10)
+print(arr_ufunc)
+print(np.sqrt(arr_ufunc))
+print(np.exp(arr_ufunc))</code></pre></div><p><strong>Binary ufuncs</strong> nhận hai mảng và trả về một mảng duy nhất.</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+x_ufunc = np.random.standard_normal(8)
+y_ufunc = np.random.standard_normal(8)
+print(x_ufunc)
+print(np.maximum(x_ufunc, y_ufunc))</code></pre></div><p>Một ufunc có thể trả về nhiều mảng. Ví dụ <code>np.modf</code> trả về phần thập phân và phần nguyên của một mảng:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arr_modf = np.random.standard_normal(7) * 5
+print(arr_modf)
+print(np.modf(arr_modf))</code></pre></div><p><strong>Một số unary ufunc</strong></p><div class="table-scroll"><table><tr><td>Hàm</td><td>Mô tả</td></tr><tr><td><code>abs</code>, <code>fabs</code></td><td>Tính giá trị tuyệt đối.</td></tr><tr><td><code>sqrt</code></td><td>Tính căn bậc hai (<code>arr ** 0.5</code>).</td></tr><tr><td><code>square</code></td><td>Tính bình phương (<code>arr ** 2</code>).</td></tr><tr><td><code>exp</code></td><td>Tính lũy thừa e^x.</td></tr><tr><td><code>log</code>, <code>log10</code>, <code>log2</code>, <code>log1p</code></td><td>Logarit tự nhiên, cơ số 10, cơ số 2, và log(1 + x).</td></tr><tr><td><code>sign</code></td><td>Tính dấu của mỗi phần tử: 1 (dương), 0 (zero), hoặc –1 (âm).</td></tr><tr><td><code>ceil</code>, <code>floor</code></td><td>Tính trần và sàn.</td></tr><tr><td><code>rint</code></td><td>Làm tròn đến số nguyên gần nhất.</td></tr><tr><td><code>modf</code></td><td>Trả về phần phân số và phần nguyên.</td></tr><tr><td><code>isnan</code>, <code>isfinite</code>, <code>isinf</code></td><td>Trả về mảng boolean.</td></tr><tr><td><code>cos</code>, <code>sin</code>, <code>tan</code>...</td><td>Các hàm lượng giác.</td></tr></table></div><p><strong>Một số binary ufunc</strong></p><div class="table-scroll"><table><tr><td>Hàm</td><td>Mô tả</td></tr><tr><td><code>add</code>, <code>subtract</code>, <code>multiply</code>, <code>divide</code></td><td>Các phép toán số học cơ bản.</td></tr><tr><td><code>power</code></td><td>Nâng lũy thừa.</td></tr><tr><td><code>maximum</code>, <code>minimum</code></td><td>Tối đa/tối thiểu theo từng phần tử.</td></tr><tr><td><code>mod</code></td><td>Phần dư.</td></tr><tr><td><code>greater</code>, <code>less</code>, <code>equal</code>...</td><td>Các phép so sánh, trả về mảng boolean.</td></tr><tr><td><code>logical_and</code>, <code>logical_or</code>, <code>logical_xor</code></td><td>Các phép toán logic.</td></tr></table></div><h3 id="topic-72">Xử lý dữ liệu dựa trên mảng NumPy</h3><p>Việc sử dụng mảng NumPy cho phép biểu diễn nhiều tác vụ xử lý dữ liệu dưới dạng các biểu thức mảng ngắn gọn và hiệu quả (kỹ thuật <strong>vectorization</strong>).</p><p>Ví dụ: đánh giá biểu thức hàm số $f(x, y) = \sqrt{x^2 + y^2}$ trên một lưới điểm.</p><p>Hàm <code>np.meshgrid</code> nhận vào hai mảng một chiều và tạo ra hai mảng hai chiều (ma trận tọa độ) biểu diễn toàn bộ các cặp giá trị (x, y).</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+points = np.arange(-5, 5, 0.01) # 1000 điểm cách đều nhau
+xs, ys = np.meshgrid(points, points)
+print(ys)
+
+# Việc đánh giá hàm trở nên rất đơn giản:
+z = np.sqrt(xs*xs + ys*ys)
+print(z)</code></pre></div><h3 id="topic-75">Biểu thức điều kiện với np.where</h3><hr><p>Hàm <code>numpy.where</code> là một phiên bản vector hóa của biểu thức <code>x if condition else y</code>.</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+xarr = np.array([1.1, 1.2, 1.3, 1.4, 1.5])
+yarr = np.array([2.1, 2.2, 2.3, 2.4, 2.5])
+cond_where = np.array([True, False, True, True, False])
+print(cond_where)
+
+# Cách thông thường sẽ cần vòng lặp, nhưng với np.where thì không:
+result_where = np.where(cond_where, xarr, yarr)
+print(result_where)
+
+# Một công dụng điển hình của where là tạo ra một mảng mới dựa trên một mảng khác.
+# Ví dụ: thay thế tất cả các giá trị dương bằng 2 và tất cả các giá trị âm bằng –2.
+arr_rand_where = np.random.standard_normal((4, 4))
+print(arr_rand_where)
+print(np.where(arr_rand_where &gt; 0, 2, -2))</code></pre></div><h3 id="topic-77">Các phương thức thống kê toán học</h3><p>Các phép toán tổng hợp (reductions) có thể được truy cập dưới dạng phương thức của đối tượng mảng hoặc các hàm cấp cao của NumPy.</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arr_stats = np.random.standard_normal((5, 4))
+print(arr_stats)
+print(arr_stats.mean())
+print(np.mean(arr_stats))
+print(arr_stats.sum())</code></pre></div><p>Các hàm <code>mean</code> và <code>sum</code> có tham số <code>axis</code> tùy chọn để tính toán thống kê trên trục được chỉ định.</p><p class="bullet"><code>axis=0</code>: tính dọc theo trục hàng (thu gọn hàng), cho một giá trị cho mỗi cột.</p><p class="bullet"><code>axis=1</code>: tính dọc theo trục cột (thu gọn cột), cho một giá trị cho mỗi hàng.</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arr_stats = np.random.standard_normal((5, 4))
+print(arr_stats.mean(axis=1)) # Trung bình của từng hàng
+print(arr_stats.sum(axis=0)) # Tổng của từng cột</code></pre></div><p>Các phương thức khác như <code>cumsum</code> (tổng tích lũy) và <code>cumprod</code> (tích tích lũy) không tổng hợp, mà tạo ra một mảng các kết quả trung gian:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arr_cumsum_2d = np.array([[0, 1, 2], [3, 4, 5], [6, 7, 8]])
+print(arr_cumsum_2d)
+print(arr_cumsum_2d.cumsum(axis=0))
+print(arr_cumsum_2d.cumsum(axis=1))</code></pre></div><p><strong>Các phương thức thống kê mảng cơ bản</strong></p><div class="table-scroll"><table><tr><td>Phương thức</td><td>Mô tả</td></tr><tr><td><code>sum</code></td><td>Tổng của tất cả các phần tử.</td></tr><tr><td><code>mean</code></td><td>Trung bình số học.</td></tr><tr><td><code>std</code>, <code>var</code></td><td>Độ lệch chuẩn và phương sai.</td></tr><tr><td><code>min</code>, <code>max</code></td><td>Giá trị tối thiểu và tối đa.</td></tr><tr><td><code>argmin</code>, <code>argmax</code></td><td>Chỉ mục của các phần tử tối thiểu và tối đa.</td></tr><tr><td><code>cumsum</code></td><td>Tổng tích lũy của các phần tử.</td></tr><tr><td><code>cumprod</code></td><td>Tích tích lũy của các phần tử.</td></tr></table></div><h3 id="topic-84">Các phương thức cho mảng kiểu logical</h3><p>Giá trị kiểu logical được biến đổi thành 1 (<code>True</code>) và 0 (<code>False</code>). Do đó, <code>sum</code> thường được dùng để đếm các giá trị <code>True</code>:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arr_bool_sum = np.random.standard_normal(100)
+print((arr_bool_sum &gt; 0).sum()) # Số lượng các giá trị dương</code></pre></div><p>Hai phương thức <code>any</code> và <code>all</code> đặc biệt hữu ích cho các mảng kiểu logical.</p><p class="bullet"><code>any</code> kiểm tra xem có ít nhất một giá trị <code>True</code> hay không.</p><p class="bullet"><code>all</code> kiểm tra xem mọi giá trị có phải là <code>True</code> hay không:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+bools = np.array([False, False, True, False])
+print(bools.any())
+print(bools.all())</code></pre></div><h3 id="topic-88">Sắp xếp giá trị trong mảng NumPy</h3><hr><p>Mảng NumPy có thể được sắp xếp <strong>tại chỗ</strong> (in-place) bằng phương thức <code>.sort()</code>.</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arr_sort = np.random.standard_normal(6)
+print(arr_sort)
+
+arr_sort.sort()
+print(arr_sort)</code></pre></div><p>Bạn có thể sắp xếp mỗi thành phần của mảng nhiều chiều dọc theo một trục bằng cách truyền số trục cho <code>sort</code>:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arr_sort_2d = np.random.standard_normal((5, 3))
+print(arr_sort_2d)
+
+arr_sort_2d_copy_2 = arr_sort_2d.copy()
+arr_sort_2d_copy_2.sort(axis=1) # Sắp xếp các hàng
+print(arr_sort_2d_copy_2)</code></pre></div><p>Hàm <code>np.sort</code> trả về một <strong>bản sao đã sắp xếp</strong> của một mảng thay vì sửa đổi mảng tại chỗ.</p><p>Một cách nhanh chóng để tính toán các phân vị (quantile) của một mảng là sắp xếp nó và chọn giá trị tại một hạng cụ thể:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+large_arr_sort = np.random.standard_normal(1000)
+large_arr_sort.sort()
+print(large_arr_sort[int(0.05 * len(large_arr_sort))]) # 5% quantile</code></pre></div><h3 id="topic-94">Các phép toán cho tập hợp (Set Operations)</h3><hr><p>Hàm <code>np.unique</code> trả về các phần tử duy nhất <strong>đã được sắp xếp</strong> trong một mảng:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+names_set = np.array([&quot;Bob&quot;, &quot;Joe&quot;, &quot;Will&quot;, &quot;Bob&quot;, &quot;Will&quot;, &quot;Joe&quot;, &quot;Joe&quot;])
+print(np.unique(names_set))</code></pre></div><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+ints_set = np.array([3, 3, 3, 2, 2, 1, 1, 4, 4])
+print(np.unique(ints_set))</code></pre></div><p>Hàm <code>np.isin</code> dùng để kiểm tra nếu các giá trị trong một mảng có nằm trong một mảng khác, và giá trị trả về là một mảng kiểu logical:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+values_set = np.array([6, 0, 0, 3, 2, 5, 6])
+print(np.isin(values_set, [2, 3, 6]))</code></pre></div><p><strong>Các phép toán tập hợp mảng</strong></p><div class="table-scroll"><table><tr><td>Phương thức</td><td>Mô tả</td></tr><tr><td><code>unique(x)</code></td><td>Tính toán các phần tử duy nhất đã được sắp xếp trong <code>x</code>.</td></tr><tr><td><code>intersect1d(x, y)</code></td><td>Tính toán các phần tử chung đã được sắp xếp (giao).</td></tr><tr><td><code>union1d(x, y)</code></td><td>Tính toán hợp của các phần tử đã được sắp xếp.</td></tr><tr><td><code>isin(x, y)</code></td><td>Tính toán một mảng boolean cho biết liệu mỗi phần tử của <code>x</code> có chứa trong <code>y</code> hay không.</td></tr><tr><td><code>setdiff1d(x, y)</code></td><td>Hiệu tập hợp; các phần tử trong <code>x</code> không có trong <code>y</code>.</td></tr><tr><td><code>setxor1d(x, y)</code></td><td>Hiệu đối xứng tập hợp; các phần tử nằm trong một trong các mảng nhưng không nằm trong cả hai.</td></tr></table></div><h3 id="topic-100">Nhập và xuất file với mảng NumPy</h3><p>Các mảng được lưu vào đĩa ở <strong>định dạng nhị phân</strong> bằng <code>np.save</code> và được tải bằng <code>np.load</code>.</p><p>Nếu tên tệp chưa có phần mở rộng <code>.npy</code>, nó sẽ được tự động thêm vào.</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arr_io = np.arange(10)
+np.save(&quot;some_array&quot;, arr_io)</code></pre></div><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+print(np.load(&quot;some_array.npy&quot;))</code></pre></div><p>Bạn có thể lưu nhiều mảng trong một tệp <code>.npz</code> không nén bằng <code>np.savez</code>:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+np.savez(&quot;array_archive.npz&quot;, a=arr_io, b=arr_io)</code></pre></div><p>Khi tải một tệp <code>.npz</code>, bạn nhận được một đối tượng giống như từ điển:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+arch = np.load(&quot;array_archive.npz&quot;)
+print(list(arch.keys()))
+print(arch[&quot;a&quot;])</code></pre></div><h3 id="topic-108">Lưu và tải tệp văn bản</h3><p>Việc tải dữ liệu văn bản có thể được thực hiện bằng <code>np.loadtxt</code> hoặc <code>np.genfromtxt</code>.</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+# Tạo một file ví dụ
+with open(&quot;array_ex.txt&quot;, &quot;w&quot;) as f:
+    f.write(&quot;1,2,3,4\n&quot;)
+    f.write(&quot;5,6,7,8\n&quot;)
+    f.write(&quot;9,10,11,12\n&quot;)
+
+arr_loadtxt = np.loadtxt(&quot;array_ex.txt&quot;, delimiter=&quot;,&quot;)
+print(arr_loadtxt)</code></pre></div><p><code>np.savetxt</code> thực hiện thao tác ngược lại: ghi một mảng vào một tệp văn bản.</p><p><strong>Lưu ý:</strong> Thư viện <code>pandas</code> (sẽ học ở phần sau) cung cấp các công cụ mạnh mẽ và tiện lợi hơn để làm việc với các tệp văn bản (như CSV).</p><h3 id="topic-112">Các phép toán đại số tuyến tính</h3><p>Việc nhân hai mảng hai chiều bằng <code>*</code> là một phép nhân <strong>theo từng phần tử</strong>.</p><p>Để thực hiện <strong>nhân ma trận</strong>, ta sử dụng hàm <code>dot</code> hoặc toán tử <code>@</code>.</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+x_linalg = np.array([[1., 2., 3.], [4., 5., 6.]])
+y_linalg = np.array([[6., 23.], [-1, 7], [8, 9]])
+print(x_linalg)
+print(y_linalg)
+print(x_linalg.dot(y_linalg))
+print(x_linalg @ np.ones(3))</code></pre></div><p>Thư viện con <code>numpy.linalg</code> có một tập hợp chuẩn các phép phân tích ma trận và những phép toán thường dùng như nghịch đảo (<code>inv</code>) và định thức (<code>det</code>).</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>from numpy.linalg import inv, qr
+import numpy as np
+X_inv = np.random.standard_normal((5, 5))
+mat_inv = X_inv.T @ X_inv
+print(mat_inv)
+print(inv(mat_inv))
+
+# mat_inv @ inv(mat_inv) sẽ ra ma trận đơn vị
+print(mat_inv @ inv(mat_inv))</code></pre></div><p><strong>Các hàm</strong> <code>numpy.linalg</code> <strong>thường được sử dụng</strong></p><div class="table-scroll"><table><tr><td>Hàm</td><td>Mô tả</td></tr><tr><td><code>numpy.diag</code></td><td>Trả về các phần tử đường chéo (nằm ở <code>numpy</code>, không thuộc <code>numpy.linalg</code>).</td></tr><tr><td><code>numpy.dot</code></td><td>Nhân ma trận (nằm ở <code>numpy</code>, không thuộc <code>numpy.linalg</code>).</td></tr><tr><td><code>trace</code></td><td>Tính tổng các phần tử đường chéo.</td></tr><tr><td><code>det</code></td><td>Tính định thức ma trận.</td></tr><tr><td><code>eig</code></td><td>Tính trị riêng và vector riêng.</td></tr><tr><td><code>inv</code></td><td>Tính nghịch đảo của một ma trận vuông.</td></tr><tr><td><code>pinv</code></td><td>Tính nghịch đảo giả Moore-Penrose.</td></tr><tr><td><code>qr</code></td><td>Tính phân rã QR.</td></tr><tr><td><code>svd</code></td><td>Tính phân rã giá trị suy biến (SVD).</td></tr><tr><td><code>solve</code></td><td>Giải hệ phương trình tuyến tính Ax = b.</td></tr><tr><td><code>lstsq</code></td><td>Tính nghiệm bình phương tối thiểu cho Ax = b.</td></tr></table></div><h3 id="topic-118">Sinh số ngẫu nhiên</h3><p>Mô-đun <code>numpy.random</code> bổ sung cho mô-đun <code>random</code> tích hợp sẵn của Python với các hàm để tạo hiệu quả toàn bộ mảng các giá trị mẫu từ nhiều loại phân phối xác suất.</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import time
+from random import normalvariate
+import numpy as np
+N = 1_000_000
+
+# `numpy.random` nhanh hơn nhiều để tạo ra số lượng lớn các số ngẫu nhiên:
+t0 = time.time()
+samples_py_rng = [normalvariate(0, 1) for _ in range(N)]
+t1 = time.time()
+print(f&quot;Python random: {t1 - t0:.4f} s&quot;)
+
+t0 = time.time()
+samples_np_rng = np.random.standard_normal(N)
+t1 = time.time()
+print(f&quot;NumPy random: {t1 - t0:.4f} s&quot;)</code></pre></div><p>Các con số này là <em>giả ngẫu nhiên</em> (pseudorandom) vì chúng được tạo ra bởi một thuật toán với hành vi xác định dựa trên <em>mầm</em> (seed) của trình tạo số ngẫu nhiên.</p><p>Để có khả năng tái tạo tốt hơn, nên sử dụng một thể hiện của <code>numpy.random.Generator</code>, được tạo bằng <code>numpy.random.default_rng</code>.</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+rng = np.random.default_rng(seed=12345)
+data_rng = rng.standard_normal((2,3))
+print(data_rng)</code></pre></div><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+rng2 = np.random.default_rng(seed=12345)
+data2_rng = rng2.standard_normal((2,3))
+print(data2_rng)</code></pre></div><p><strong>Một số hàm <code>numpy.random</code> (trên đối tượng <code>Generator</code>)</strong></p><div class="table-scroll"><table><tr><td>Hàm</td><td>Mô tả</td></tr><tr><td><code>permutation</code></td><td>Trả về một hoán vị ngẫu nhiên của một chuỗi.</td></tr><tr><td><code>shuffle</code></td><td>Hoán vị ngẫu nhiên một chuỗi tại chỗ.</td></tr><tr><td><code>uniform</code></td><td>Rút các mẫu từ một phân phối đều.</td></tr><tr><td><code>integers</code></td><td>Rút các số nguyên ngẫu nhiên từ một phạm vi cho trước.</td></tr><tr><td><code>standard_normal</code></td><td>Rút các mẫu từ một phân phối chuẩn với trung bình 0 và độ lệch chuẩn 1.</td></tr><tr><td><code>binomial</code></td><td>Rút các mẫu từ một phân phối nhị thức.</td></tr><tr><td><code>normal</code></td><td>Rút các mẫu từ một phân phối chuẩn (Gaussian).</td></tr><tr><td><code>beta</code></td><td>Rút các mẫu từ một phân phối beta.</td></tr><tr><td><code>chisquare</code></td><td>Rút các mẫu từ một phân phối chi bình phương.</td></tr><tr><td><code>gamma</code></td><td>Rút các mẫu từ một phân phối gamma.</td></tr><tr><td><code>poisson</code></td><td>Rút các mẫu từ một phân phối Poisson.</td></tr></table></div><h3 id="topic-124">Tổng kết về thư viện NumPy</h3><p class="bullet">Việc nắm vững các thao tác với mảng <code>NumPy</code> và kỹ thuật <strong>tính toán véc-tơ</strong> là nền tảng để sử dụng hiệu quả các thư viện cấp cao hơn như <code>pandas</code>.</p><p class="bullet">Cấu trúc <code>ndarray</code> của NumPy cung cấp:</p><p class="bullet">Một đối tượng lưu trữ dữ liệu <strong>mạnh mẽ</strong>, <strong>linh hoạt</strong> và <strong>hiệu suất cao</strong>.</p><p class="bullet">Hỗ trợ các thao tác vector hóa, xử lý mảng nhiều chiều và tích hợp tốt với các thư viện khoa học dữ liệu khác.</p><p><strong>Chuyển tiếp nội dung</strong></p><p class="bullet">Trong phần tiếp theo, chúng ta sẽ tìm hiểu sâu hơn về <strong>pandas</strong> – thư viện cho phép áp dụng các khái niệm từ NumPy vào các <strong>tình huống phân tích dữ liệu thực tế</strong>.</p><h2 id="topic-125">Thư viện Pandas</h2><h3 id="topic-126">Giới thiệu về thư viện pandas</h3><p class="bullet"><code>pandas</code> là <strong>công cụ không thể thiếu</strong> đối với các nhà phân tích dữ liệu và nhà khoa học dữ liệu khi làm việc với Python.</p><p class="bullet">Thư viện cung cấp:</p><p class="bullet"><strong>Cấu trúc dữ liệu hiệu suất cao</strong>, dễ sử dụng.</p><p class="bullet"><strong>Công cụ phân tích dữ liệu tiên tiến</strong> cho dữ liệu dạng bảng.</p><p class="bullet">Tên gọi <code>pandas</code> bắt nguồn từ:</p><p class="bullet">&quot;panel data&quot; – thuật ngữ trong kinh tế lượng để chỉ <strong>dữ liệu bảng nhiều chiều có cấu trúc</strong>.</p><p class="bullet">&quot;Python data analysis&quot;.</p><p><strong>Hai cấu trúc dữ liệu cốt lõi của pandas</strong></p><p class="bullet"><code>Series</code>: một <em>chuỗi</em> dữ liệu một chiều có nhãn (label).</p><p class="bullet"><code>DataFrame</code>: một <em>bảng dữ liệu hai chiều</em> với hàng và cột có nhãn.</p><p class="bullet">Mặc dù không phải là công cụ phù hợp cho mọi thao tác dữ liệu chuyên sâu, nhưng:</p><p class="bullet"><code>Series</code> và <code>DataFrame</code> thường là lựa chọn hiệu quả và trực quan trong hầu hết các tình huống xử lý dữ liệu thực tế.</p><p><strong>Mối quan hệ với NumPy</strong></p><p class="bullet"><code>pandas</code> kế thừa nhiều ý tưởng từ <strong>lập trình mảng của NumPy</strong> nhưng:</p><p class="bullet">Được thiết kế tối ưu cho dữ liệu dạng bảng và không đồng nhất.</p><p class="bullet">Trong thực hành:</p><p class="bullet"><code>pandas</code> và <code>NumPy</code> <strong>được sử dụng cùng nhau</strong>.</p><p class="bullet">Dữ liệu thường được xử lý trước với <code>pandas</code>, sau đó chuyển sang <code>NumPy</code> để huấn luyện mô hình với <code>scikit-learn</code>.</p><p><strong>Quy ước import thư viện pandas</strong></p><pre><code>import pandas as pd
+</code></pre><p>Theo quy ước này:</p><p class="bullet">Mỗi khi bạn thấy <code>pd.</code> trong mã nguồn, đó là đang tham chiếu đến thư viện pandas.</p><p><strong>Phần này sẽ giới thiệu:</strong></p><p class="bullet">Các cấu trúc dữ liệu cơ bản của pandas, bao gồm <strong>series</strong> và <strong>dataframe</strong></p><p class="bullet">Cách tương tác và thao tác dữ liệu hiệu quả với Series và DataFrame.</p><h3 id="topic-127">Series (chuỗi)</h3><p><strong>Khái niệm về Series trong pandas</strong></p><p class="bullet">Một <strong>chuỗi</strong> (<em>Series</em>) là:</p><p class="bullet">Một đối tượng <strong>giống mảng một chiều</strong> (<code>1D</code>) trong <code>pandas</code>.</p><p class="bullet">Chứa <strong>một tập hợp các giá trị</strong> và <strong>một mảng các nhãn dữ liệu</strong> (tên gọi là <em>chỉ số</em> – <code>index</code>).</p><p class="bullet">Mỗi phần tử trong <code>Series</code> gồm:</p><p class="bullet"><strong>Giá trị dữ liệu</strong> (data).</p><p class="bullet"><strong>Chỉ số</strong> (index) liên kết – giúp truy cập và định danh từng giá trị.</p><p class="bullet">Trường hợp đơn giản nhất:</p><p class="bullet">Một <code>Series</code> có thể được hình thành từ <strong>một mảng dữ liệu duy nhất</strong>, <code>pandas</code> sẽ tự sinh các chỉ số mặc định từ <code>0</code>.</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+import pandas as pd
+
+obj = pd.Series([4, 7, -5, 3])
+print(obj)</code></pre></div><p>Biểu diễn chuỗi của một <code>Series</code> được hiển thị cho thấy chỉ số ở bên trái và các giá trị ở bên phải. Vì chúng ta không chỉ định chỉ số cho dữ liệu, một chỉ số mặc định bao gồm các số nguyên từ 0 đến <code>n - 1</code>, được tạo ra, với <code>n</code> là độ dài của dữ liệu. Bạn có thể trích xuất biểu diễn mảng của giá trị và chỉ số của <code>Series</code> thông qua các thuộc tính <code>array</code> và <code>index</code>:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import pandas as pd
+
+obj = pd.Series([4, 7, -5, 3])
+print(obj.array)
+print(obj.index)</code></pre></div><p>Thông thường, bạn có thể tạo một <code>Series</code> với một chỉ số xác định từng điểm dữ liệu bằng một nhãn:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import pandas as pd
+
+obj2 = pd.Series([4, 7, -5, 3], index=[&quot;d&quot;, &quot;b&quot;, &quot;a&quot;, &quot;c&quot;])
+print(obj2)
+
+# So với một mảng trong NumPy, bạn có thể sử dụng các tên thay cho chỉ số khi chọn các giá trị đơn lẻ hoặc một tập hợp các giá trị:
+print(obj2[&quot;a&quot;])
+
+obj2[&quot;d&quot;] = 6
+print(obj2[[&quot;c&quot;, &quot;a&quot;, &quot;d&quot;]])</code></pre></div><p>Chuỗi của <code>pandas</code> có thể sử dụng các hàm <code>NumPy</code> hoặc các phép toán giống như <code>NumPy</code>, chẳng hạn như lọc với một mảng logical, các phép toán số học vô hướng, hoặc áp dụng các hàm toán học, và kết quả trả lại sẽ bảo toàn liên kết giữa chỉ số với giá trị:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import numpy as np
+import pandas as pd
+
+obj2 = pd.Series([4, 7, -5, 3], index=[&quot;d&quot;, &quot;b&quot;, &quot;a&quot;, &quot;c&quot;])
+print(obj2[obj2 &gt; 0])
+print(obj2 * 2)
+print(np.exp(obj2))
+
+# Một cách khác để hình dung về Series của pandas là một từ điển có thứ tự cố định. Trong nhiều ngữ cảnh, bạn có thể sử dụng nó như một dict:
+print(&quot;b&quot; in obj2)
+print(&quot;e&quot; in obj2)</code></pre></div><p>Nếu bạn có dữ liệu được chứa trong một <code>dict</code> của Python, bạn có thể tạo một <code>Series</code> bằng hàm <code>Series</code></p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import pandas as pd
+sdata = {&quot;Ohio&quot;: 35000, &quot;Texas&quot;: 71000, &quot;Oregon&quot;: 16000, &quot;Utah&quot;: 5000}
+obj3 = pd.Series(sdata)
+print(obj3)</code></pre></div><p>Khi bạn chỉ sử dụng một <code>dict</code>, chỉ số trong <code>Series</code> kết quả sẽ là các khóa của <code>dict</code> theo thứ tự. Bạn có thể ghi đè lên chỉ số bằng cách truyền các khóa <code>dict</code> theo thứ tự bạn muốn chúng xuất hiện trong <code>Series</code> kết quả:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import pandas as pd
+sdata = {&quot;Ohio&quot;: 35000, &quot;Texas&quot;: 71000, &quot;Oregon&quot;: 16000, &quot;Utah&quot;: 5000}
+states = [&quot;California&quot;, &quot;Ohio&quot;, &quot;Oregon&quot;, &quot;Texas&quot;]
+obj4 = pd.Series(sdata, index=states)
+print(obj4)</code></pre></div><p>Cuốn sách này sẽ sử dụng thuật ngữ &quot;missing value&quot; hoặc &quot;NA&quot; để chỉ dữ liệu không quan sát được. Các hàm <code>isna</code> và <code>notna</code> trong <code>pandas</code> được sử dụng để phát hiện dữ liệu bị thiếu:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import pandas as pd
+sdata = {&quot;Ohio&quot;: 35000, &quot;Texas&quot;: 71000, &quot;Oregon&quot;: 16000, &quot;Utah&quot;: 5000}
+states = [&quot;California&quot;, &quot;Ohio&quot;, &quot;Oregon&quot;, &quot;Texas&quot;]
+obj4 = pd.Series(sdata, index=states)
+
+print(pd.isna(obj4))
+print(pd.notna(obj4))
+
+# Series cũng có phương thức .isna() để xác định giá trị không quan sát được:
+print(obj4.isna())</code></pre></div><p>Một tính năng hữu ích của <code>Series</code> cho nhiều ứng dụng là đối tượng này <strong>tự động căn chỉnh theo chỉ số</strong> trong các phép toán số học. Bạn đọc quan sát ví dụ sau:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import pandas as pd
+sdata = {&quot;Ohio&quot;: 35000, &quot;Texas&quot;: 71000, &quot;Oregon&quot;: 16000, &quot;Utah&quot;: 5000}
+obj3 = pd.Series(sdata)
+states = [&quot;California&quot;, &quot;Ohio&quot;, &quot;Oregon&quot;, &quot;Texas&quot;]
+obj4 = pd.Series(sdata, index=states)
+print(obj3 + obj4)
+
+# Cả đối tượng Series và chỉ số của đối tượng này đều có thuộc tính name, được tích hợp với các chức năng khác của pandas. Chỉ số của một Series có thể được thay đổi trực tiếp bằng cách gán:
+obj4.name = &quot;population&quot;
+obj4.index.name = &quot;state&quot;
+print(obj4)
+</code></pre></div><h3 id="topic-143">DataFrame</h3><p><code>DataFrame</code> biểu diễn dữ liệu dạng bảng chữ nhật và chứa một tập hợp các cột có thứ tự, mỗi cột có thể là một kiểu giá trị khác nhau. <code>DataFrame</code> có cả chỉ số hàng và chỉ số cột. Cũng có thể hiểu <code>DataFrame</code> là một từ điển (<code>dict</code>) của các chuỗi (<code>Series</code>) có cùng một mảng chỉ số.</p><p>Có nhiều cách để xây dựng một <code>DataFrame</code>, mặc dù một trong những cách phổ biến nhất là từ một từ điển (<code>dict</code>) của các danh sách (<code>list</code>) có độ dài bằng nhau:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import pandas as pd
+import numpy as np
+data = {&quot;state&quot;: [&quot;Ohio&quot;, &quot;Ohio&quot;, &quot;Ohio&quot;, &quot;Nevada&quot;, &quot;Nevada&quot;, &quot;Nevada&quot;],
+        &quot;year&quot;: [2000, 2001, 2002, 2001, 2002, 2003],
+        &quot;pop&quot;: [1.5, 1.7, 3.6, 2.4, 2.9, 3.2]}
+frame = pd.DataFrame(data)
+print(frame)
+
+# Đối với các DataFrame lớn, phương thức head được sử dụng để lựa chọn các hàng đầu tiên:
+print(frame.head())
+
+# Tương tự, phương thức tail được sử dụng để lựa chọn các hàng dưới cùng:
+print(frame.tail())
+
+# Bạn có thể sắp xếp lại thứ tự các cột bằng cách sử dụng tham số columns
+print(pd.DataFrame(data, columns=[&quot;year&quot;, &quot;state&quot;, &quot;pop&quot;]))
+
+# Nếu bạn tạo DataFrame với một cột không có trong dict, giá trị cột đó sẽ chỉ bao gồm các giá trị NA
+frame2 = pd.DataFrame(data, columns=[&quot;year&quot;, &quot;state&quot;, &quot;pop&quot;, &quot;debt&quot;])
+print(frame2)
+
+# Một cột trong DataFrame có thể được truy xuất dưới dạng Series bằng cách sử dụng ký hiệu kiểu dict hoặc bằng cách gọi như một thuộc tính:
+print(frame2[&quot;state&quot;]) # gọi tên
+print(frame2.year) # gọi theo kiểu thuộc tính
+
+# Các hàng của DataFrame cũng có thể được truy xuất theo vị trí hoặc tên với thuộc tính đặc biệt loc:
+print(frame2.loc[1])
+
+# Các cột của DataFrame có thể được sửa đổi bằng cách gán giá trị một cách trực tiếp. Ví dụ, cột &quot;debt&quot; trống có thể được gán một giá trị vô hướng hoặc một mảng các giá trị:
+frame2[&quot;debt&quot;] = 11.5
+print(frame2)
+frame2[&quot;debt&quot;] = np.arange(6.0)
+print(frame2)</code></pre></div><p>Khi bạn sử dụng một danh sách hoặc một mảng để gán cho một cột, độ dài phải khớp với độ dài của <code>DataFrame</code>. Nếu bạn gán một <code>Series</code>, các chỉ số sẽ được <strong>tự động căn chỉnh</strong> theo chỉ số của <code>DataFrame</code>, chèn các giá trị bị thiếu vào bất kỳ lỗ hổng nào:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import pandas as pd
+
+data = {&quot;state&quot;: [&quot;Ohio&quot;, &quot;Ohio&quot;, &quot;Ohio&quot;, &quot;Nevada&quot;, &quot;Nevada&quot;, &quot;Nevada&quot;],
+        &quot;year&quot;: [2000, 2001, 2002, 2001, 2002, 2003],
+        &quot;pop&quot;: [1.5, 1.7, 3.6, 2.4, 2.9, 3.2]}
+
+frame2 = pd.DataFrame(data, columns=[&quot;year&quot;, &quot;state&quot;, &quot;pop&quot;, &quot;debt&quot;])
+val = pd.Series([-1.2, -1.5, -1.7], index=[0, &quot;four&quot;, &quot;five&quot;])
+frame2[&quot;debt&quot;] = val
+print(frame2)
+
+# Việc gán một cột không tồn tại trong DataFrame sẽ tự động tạo ra một cột mới. Từ khóa del được sử dụng để xóa các cột. Bạn đọc quan sát ví dụ sau, khi chúng ta thêm một cột mới có tên eastern chứa dữ liệu kiểu logical sau đó sử dụng từ khóa del để xóa cột này:
+frame2[&quot;eastern&quot;] = frame2[&quot;state&quot;] == &quot;Ohio&quot;
+print(frame2)
+
+del frame2[&quot;eastern&quot;]
+print(frame2.columns)</code></pre></div><p>Một dạng dữ liệu phổ biến khác là một từ điển của các từ điển, hay còn gọi là các từ điển lồng nhau. Nếu từ điển lồng nhau được dùng để khởi tạo cho <code>DataFrame</code>, <code>pandas</code> sẽ hiểu các khóa <code>dict</code> bên ngoài là các cột và các khóa bên trong là các chỉ số hàng:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import pandas as pd
+populations = {&quot;Ohio&quot;: {2000: 1.5, 2001: 1.7, 2002: 3.6},
+               &quot;Nevada&quot;: {2001: 2.4, 2002: 2.9}}
+frame3 = pd.DataFrame(populations)
+print(frame3)
+
+# Bạn có thể chuyển vị DataFrame, nghĩa là hoán đổi hàng và cột, bằng cách sử dụng phương thức .T tương tự như một mảng NumPy:
+print(frame3.T)</code></pre></div><p><strong>Các đầu vào dữ liệu khả thi cho hàm tạo DataFrame</strong></p><div class="table-scroll"><table><tr><td>Loại</td><td>Ghi chú</td></tr><tr><td><code>dict</code> của các mảng một chiều, danh sách, <code>dict</code>, hoặc <code>Series</code></td><td>Mỗi <code>ndarray</code> phải có cùng độ dài. Nếu một chỉ số được khởi tạo, độ dài của chỉ số phải khớp với độ dài của các mảng.</td></tr><tr><td>Mảng hai chiều của NumPy (<code>ndarray</code>)</td><td>Được xử lý như một ma trận dữ liệu, chuyển đổi thành một <code>DataFrame</code> với các chỉ số hàng và cột.</td></tr><tr><td><code>ndarray</code> có cấu trúc hoặc bản ghi</td><td>Được xử lý tương tự như một <code>dict</code> của các <code>Series</code>.</td></tr><tr><td>Một <code>Series</code> khác</td><td>Chỉ số của <code>Series</code> được sử dụng làm chỉ số hàng của <code>DataFrame</code> kết quả.</td></tr><tr><td>Một <code>DataFrame</code> khác</td><td>Chỉ số của <code>DataFrame</code> được giữ lại trừ khi một chỉ số khác được truyền.</td></tr></table></div><h3 id="topic-151">Chỉ số trong series và dataframe</h3><p>Đối tượng <code>Index</code> của <code>pandas</code> chịu trách nhiệm lưu trữ các nhãn hay tên của các trục. Bất kỳ mảng hoặc chuỗi nào khác mà bạn sử dụng khi xây dựng một <code>Series</code> hoặc <code>DataFrame</code> đều được chuyển đổi nội bộ thành một <code>Index</code>:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import pandas as pd
+import numpy as np
+obj = pd.Series(np.arange(3), index=[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;])
+index = obj.index
+print(index)</code></pre></div><p>Các đối tượng <code>Index</code> của <code>pandas</code> là <strong>bất biến</strong> và do đó không thể được sửa đổi bởi người dùng:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code># index[1] = &quot;d&quot;  # Sẽ báo lỗi TypeError</code></pre></div><p>Ngoài việc giống như một mảng, một <code>Index</code> cũng hoạt động giống như một tập hợp có kích thước cố định:</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import pandas as pd
+populations = {&quot;Ohio&quot;: {2000: 1.5, 2001: 1.7, 2002: 3.6},
+               &quot;Nevada&quot;: {2001: 2.4, 2002: 2.9}}
+frame3 = pd.DataFrame(populations)
+
+print(&quot;Ohio&quot; in frame3.columns)
+print(2003 in frame3.index)</code></pre></div><p>Không giống như các tập hợp của Python, một <code>pd.Index</code> của <code>pandas</code> có thể chứa các nhãn trùng lặp. Việc chọn các nhãn trùng lặp sẽ chọn tất cả các lần xuất hiện của nhãn đó.</p><div class="code-example"><div class="code-bar"><span>PYTHON · VÍ DỤ</span><button class="copy" type="button">Sao chép</button></div><pre><code>import pandas as pd
+print(pd.Index([&quot;foo&quot;, &quot;foo&quot;, &quot;bar&quot;, &quot;bar&quot;]))</code></pre></div><p><strong>Các phương thức và thuộc tính chính của Index</strong></p><div class="table-scroll"><table><tr><td>Phương thức</td><td>Mô tả</td></tr><tr><td><code>append</code></td><td>Nối thêm các đối tượng <code>Index</code> bổ sung, tạo ra một <code>Index</code> mới.</td></tr><tr><td><code>difference</code></td><td>Tính toán hiệu tập hợp dưới dạng một <code>Index</code>.</td></tr><tr><td><code>intersection</code></td><td>Tính toán giao tập hợp.</td></tr><tr><td><code>union</code></td><td>Tính toán hợp tập hợp.</td></tr><tr><td><code>isin</code></td><td>Tính toán một mảng boolean cho biết liệu mỗi giá trị có nằm trong tập hợp được truyền hay không.</td></tr><tr><td><code>delete</code></td><td>Tính toán <code>Index</code> mới bằng cách xóa phần tử ở vị trí <code>i</code>.</td></tr><tr><td><code>drop</code></td><td>Tính toán <code>Index</code> mới bằng cách xóa các giá trị được truyền.</td></tr><tr><td><code>insert</code></td><td>Tính toán <code>Index</code> mới bằng cách chèn phần tử ở vị trí <code>i</code>.</td></tr><tr><td><code>is_monotonic_increasing</code></td><td>Trả về <code>True</code> nếu mỗi phần tử lớn hơn hoặc bằng phần tử trước đó.</td></tr><tr><td><code>is_monotonic_decreasing</code></td><td>Trả về <code>True</code> nếu mỗi phần tử nhỏ hơn hoặc bằng phần tử trước đó.</td></tr><tr><td><code>is_unique</code></td><td>Trả về <code>True</code> nếu <code>Index</code> không có nhãn trùng lặp.</td></tr><tr><td><code>unique</code></td><td>Tính toán mảng các nhãn duy nhất trong <code>Index</code>.</td></tr><tr><td><code>name</code></td><td>Thuộc tính để gán tên cho một đối tượng <code>Index</code>.</td></tr><tr><td><code>values</code></td><td>Trả về <code>Index</code> dưới dạng một <code>ndarray</code>.</td></tr></table></div><h2 id="topic-161">Câu hỏi ôn tập lý thuyết</h2><div class="table-scroll"><table><tr><td><strong>Thư viện NumPy trong Python chủ yếu được sử dụng cho mục đích gì?</strong></td><td></td></tr><tr><td>Xử lý dữ liệu dạng bảng</td><td></td></tr><tr><td>Tính toán khoa học với mảng nhiều chiều</td><td></td></tr><tr><td>Vẽ biểu đồ dữ liệu</td><td></td></tr><tr><td>Xây dựng giao diện web</td><td></td></tr></table></div><div class="table-scroll"><table><tr><td><strong>Pandas được sử dụng để làm gì trong khoa học dữ liệu?</strong></td><td></td></tr><tr><td>Tạo ứng dụng di động</td><td></td></tr><tr><td>Xử lý và phân tích dữ liệu dạng bảng</td><td></td></tr><tr><td>Huấn luyện mô hình học sâu</td><td></td></tr><tr><td>Lập trình nhúng</td><td></td></tr></table></div><div class="table-scroll"><table><tr><td><strong>Matplotlib là thư viện phục vụ cho mục đích nào?</strong></td><td></td></tr><tr><td>Trực quan hóa dữ liệu</td><td></td></tr><tr><td>Tăng tốc tính toán song song</td><td></td></tr><tr><td>Xử lý ngôn ngữ tự nhiên</td><td></td></tr><tr><td>Quản lý dữ liệu lớn</td><td></td></tr></table></div><div class="table-scroll"><table><tr><td><strong>Seaborn được xây dựng dựa trên thư viện nào?</strong></td><td></td></tr><tr><td>TensorFlow</td><td></td></tr><tr><td>PyTorch</td><td></td></tr><tr><td>Matplotlib</td><td></td></tr><tr><td>OpenCV</td><td></td></tr></table></div><div class="table-scroll"><table><tr><td><strong>Scikit-learn chủ yếu hỗ trợ gì?</strong></td><td></td></tr><tr><td>Phân tích thống kê mô tả</td><td></td></tr><tr><td>Các thuật toán học máy (Machine Learning)</td><td></td></tr><tr><td>Xử lý hình ảnh</td><td></td></tr><tr><td>Tạo dashboard trực quan</td><td></td></tr></table></div><div class="table-scroll"><table><tr><td><strong>TensorFlow và PyTorch là các thư viện nổi tiếng trong lĩnh vực nào?</strong></td><td></td></tr><tr><td>Xử lý văn bản</td><td></td></tr><tr><td>Phát triển ứng dụng web</td><td></td></tr><tr><td>Học sâu (Deep Learning)</td><td></td></tr><tr><td>Phân tích dữ liệu kinh tế</td><td></td></tr></table></div><div class="table-scroll"><table><tr><td><strong>Thư viện OpenCV thường được sử dụng trong lĩnh vực nào?</strong></td><td></td></tr><tr><td>Xử lý ảnh và thị giác máy tính</td><td></td></tr><tr><td>Phân tích dữ liệu kinh tế</td><td></td></tr><tr><td>Trực quan hóa dữ liệu</td><td></td></tr><tr><td>Tối ưu hóa mô hình toán học</td><td></td></tr></table></div><div class="table-scroll"><table><tr><td><strong>Thư viện Statsmodels được sử dụng chủ yếu để làm gì?</strong></td><td></td></tr><tr><td>Phân tích dữ liệu thời gian thực</td><td></td></tr><tr><td>Thống kê và mô hình hóa dữ liệu</td><td></td></tr><tr><td>Huấn luyện mạng nơ-ron</td><td></td></tr><tr><td>Quản lý cơ sở dữ liệu</td><td></td></tr></table></div><div class="table-scroll"><table><tr><td><strong>Plotly khác với Matplotlib ở điểm nào?</strong></td><td></td></tr><tr><td>Plotly hỗ trợ tương tác với biểu đồ</td><td></td></tr><tr><td>Plotly chỉ dùng để huấn luyện mô hình</td><td></td></tr><tr><td>Plotly không hỗ trợ vẽ biểu đồ 3D</td><td></td></tr><tr><td>Plotly chỉ chạy trên Linux</td><td></td></tr></table></div><div class="table-scroll"><table><tr><td><strong>Khi cần xử lý dữ liệu lớn với Spark trong Python, ta thường dùng thư viện nào?</strong></td><td></td></tr><tr><td>Dask</td><td></td></tr><tr><td>PySpark</td><td></td></tr><tr><td>Joblib</td><td></td></tr><tr><td>Numba</td><td></td></tr></table></div></article></main><footer><span>PYTHON / GHI CHÉP KHOA HỌC DỮ LIỆU</span><span>Nội dung từ notebook bài giảng</span></footer><a class="back" href="#" aria-label="Về đầu trang">↑ Đầu trang</a><script src="app.js"></script></body></html>
